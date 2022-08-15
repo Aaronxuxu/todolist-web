@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { lazy, Suspense } from "react";
+import { Routes, Route } from "react-router-dom";
 
+import { Layout } from "antd";
+import TodoListHeader from "./components/TodoList_Header";
+import PageLoading from "./components/Page_Loading";
+import routePath from "./utils/routePath";
+
+import "./App.less";
+const { Content } = Layout;
+const TodoListHome = lazy(() => import("./pages/TodoList_Home"));
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <TodoListHeader />
+      <Content>
+        <Suspense fallback={<PageLoading />}>
+          <Routes>
+            <Route index element={<TodoListHome />}></Route>
+            {routePath.map((e) => (
+              <Route key={e.key} path={e.key} element={<e.element />}></Route>
+            ))}
+          </Routes>
+        </Suspense>
+      </Content>
     </div>
   );
 }
