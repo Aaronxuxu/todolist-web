@@ -11,7 +11,7 @@ const { Content } = Layout;
 const TodoListHome = lazy(() => import("./pages/TodoList_Home"));
 function App() {
   return (
-    <div className="App">
+    <>
       <TodoListHeader />
       <Content>
         <Suspense fallback={<PageLoading />}>
@@ -23,7 +23,7 @@ function App() {
           </Routes>
         </Suspense>
       </Content>
-    </div>
+    </>
   );
 }
 
