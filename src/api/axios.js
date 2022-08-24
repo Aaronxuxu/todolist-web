@@ -3,6 +3,8 @@ import ajax from "./ajax";
 
 // 登录
 export const login = (data) => ajax("/api/login", POST, data);
+// 退出请求
+export const logout = (data) => ajax("/api/logout", POST, data);
 
 // 获取登录用户的个人信息
 export const getUserInfo = (id) => ajax("/api/userInfo", GET, id);

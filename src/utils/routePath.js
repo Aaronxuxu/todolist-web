@@ -1,6 +1,5 @@
 import { lazy } from "react";
 const routePath = [
-    
   {
     key: "/home",
     name: "主页",
@@ -12,9 +11,9 @@ const routePath = [
     element: lazy(() => import("../pages/TodoList_Detail")),
   },
   {
-    key: "/login",
+    key: "/register",
     name: "登录",
-    element: lazy(() => import("../pages/TodoList_Login")),
+    element: lazy(() => import("../pages/TodoList_Register")),
   },
   {
     key: "/userInfo",
